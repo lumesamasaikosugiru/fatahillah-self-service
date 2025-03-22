@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,9 +11,9 @@ Route::get('/dashboard', function () {
     return view('pages.dashboard');
 });
 
-Route::get('/user', [User::class, 'index']);
-Route::get('/user/create', [User::class, 'create']);
-Route::get('/user/{$id}', [User::class, 'edit']);
-Route::post('/user}', [User::class, 'store']);
-Route::put('/user/{id}', [User::class, 'update']);
-Route::delete('/user/{id}', [User::class, 'destroy']);
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/create', [UserController::class, 'create']);
+Route::get('/user/{id}', [UserController::class, 'edit']);
+Route::post('/user', [UserController::class, 'store']);
+Route::put('/user/{id}', [UserController::class, 'update']);
+Route::delete('/user/{id}', [UserController::class, 'destroy']);

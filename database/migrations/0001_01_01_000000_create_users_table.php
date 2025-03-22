@@ -17,8 +17,12 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('role', ['superadmin', 'admin', 'pengurus', 'kepala sekolah', 'operator sekolah', 'pegawai',]);
-            $table->enum('status', ['aktif', 'nonaktif']);
+            $table->enum('role', ['Superadmin', 'Pengurus', 'Kepala Sekolah', 'Kabag TU', 'Operator Sekolah', 'Guru', 'Karyawan']);
+            $table->foreignId('work_area_current')->nullable()->constrained('schools')->onDelete('set null');
+            $table->enum('employee_type', ['GT', 'GTT', 'KT', 'KTT']);
+            $table->date('start_duty');
+            $table->date('end_duty')->nullable();
+            $table->enum('status_account', ['aktif', 'nonaktif']);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -6,6 +6,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\school;
+use App\Models\UserProfiles;
+use App\Models\UserEducation;
+use App\Models\UserExperience;
+use App\Models\UserMutation;
 
 class User extends Authenticatable
 {
@@ -23,8 +28,17 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'status',
+        'work_area_current',
+        'employee_type',
+        'start_duty',
+        'end_duty',
+        'status_account',
     ];
+
+    public function user_to_school()
+    {
+        return $this->belongsTo(school::class, 'work_area_current');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
