@@ -8,7 +8,11 @@ use App\Models\User;
 class UserExperience extends Model
 {
     protected $fillable = [
-        ""
+        "user_id",
+        "company",
+        "position",
+        "start_year",
+        "end_year",
     ];
 
 

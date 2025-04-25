@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('Users')->onDelete('set null');
+            $table->foreignId('user_id')
+                ->constrained('users', 'id');
             $table->string('no_kk', 16)->nullable()->unique();
             $table->string('no_nik', 16)->nullable()->unique();
             $table->enum('religion', ['Islam', 'Kristen', 'Protestan', 'Katolik', 'Hindu', 'Buddha', 'Konghucu']);

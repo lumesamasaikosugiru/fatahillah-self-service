@@ -18,7 +18,6 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['Superadmin', 'Pengurus', 'Kepala Sekolah', 'Kabag TU', 'Operator Sekolah', 'Guru', 'Karyawan']);
-            $table->foreignId('work_area_current')->nullable()->constrained('schools')->onDelete('set null');
             $table->enum('employee_type', ['GT', 'GTT', 'KT', 'KTT']);
             $table->date('start_duty');
             $table->date('end_duty')->nullable();

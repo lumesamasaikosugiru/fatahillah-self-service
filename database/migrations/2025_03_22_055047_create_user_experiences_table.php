@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('user_experiences', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('Users')->onDelete('set null');
+            $table->foreignId('user_id')
+                ->constrained('users', 'id');
             $table->string('company', 50);
             $table->string('position', 30);
             $table->year('start_year');

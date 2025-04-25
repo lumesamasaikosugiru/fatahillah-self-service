@@ -11,6 +11,7 @@ use App\Models\UserProfiles;
 use App\Models\UserEducation;
 use App\Models\UserExperience;
 use App\Models\UserMutation;
+use App\Models\Leave;
 
 class User extends Authenticatable
 {
@@ -38,6 +39,10 @@ class User extends Authenticatable
     public function user_to_school()
     {
         return $this->belongsTo(school::class, 'work_area_current');
+    }
+    public function user_to_leave()
+    {
+        return $this->hasMany(Leave::class, 'user_id');
     }
 
     /**

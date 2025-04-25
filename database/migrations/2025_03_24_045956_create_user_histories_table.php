@@ -10,14 +10,16 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('leaves', function (Blueprint $table) {
+        Schema::create('user_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
                 ->constrained('users', 'id');
-            $table->date('date_start');
-            $table->date('end_start');
-            $table->string('reason', 100);
-            $table->enum('status', ['Pending', 'Disetujui', 'Ditolak']);
+            $table->foreignId('school_id')
+                ->constrained('schools', 'id');
+            $table->enum('employee_type', ['GT', 'GTT', 'KT', 'KTT']);
+            $table->date('start_duty');
+            $table->date('end_duty');
+            $table->enum('status', ['Aktif', 'Nonaktif']);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('leaves');
+        Schema::dropIfExists('user_histories');
     }
 };

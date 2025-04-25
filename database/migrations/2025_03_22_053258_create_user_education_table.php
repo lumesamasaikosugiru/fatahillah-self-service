@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::create('user_education', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('Users')->onDelete('set null');
+            $table->foreignId('user_id')
+                ->constrained('users', 'id');
             $table->enum('edu_level', ['SD', 'SMP/s', 'SMA/s', 'S1', 'S2', 'S3']);
             $table->string('name_instation')->nullable();
             $table->string('major', 30)->nullable();
